@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenCV Video Processing</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="logo">
+          <img src="../static/img/logo.webp" alt="Logo" class="logo-image" />
+        </div>
+        <div class="title">
+          <h1>Procesamiento de Video con OpenCV</h1>
+          <p>Capturando video y procesándolo con OpenCV en el servidor</p>
+        </div>
+      </header>
+
+      <main>
+        <div class="video-section">
+          <div class="video-container">
+            <div class="camera-feed">
+              <h3>Cámara en Vivo</h3>
+              <video id="video-element" autoplay playsinline></video>
+              <div class="camera-overlay" id="camera-status">
+                <div class="spinner"></div>
+                <p>Iniciando cámara...</p>
+              </div>
+            </div>
+
+            <div class="processed-feed">
+              <h3>Video Procesado con OpenCV</h3>
+              <canvas id="processed-canvas"></canvas>
+              <div class="camera-overlay" id="processing-status">
+                <div class="spinner"></div>
+                <p>Procesando...</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="controls">
+            <button id="start-camera" class="control-btn">
+              Iniciar Cámara
+            </button>
+            <button id="stop-camera" class="control-btn" disabled>
+              Detener Cámara
+            </button>
+            <button id="toggle-processing" class="control-btn" disabled>
+              Iniciar Procesamiento
+            </button>
+            <div class="fps-counter">FPS: <span id="fps-counter">0</span></div>
+          </div>
+        </div>
+
+        <div class="effects-panel">
+          <h2>Efectos OpenCV</h2>
+          <div class="effects-buttons" id="effects-container">
+            <!-- Los botones de efectos se cargarán dinámicamente desde JavaScript -->
+          </div>
+          <div class="effect-description">
+            <h3>Descripción del Efecto</h3>
+            <p id="effect-info">
+              Selecciona un efecto para ver su descripción.
+            </p>
+          </div>
+
+          <div class="technical-info">
+            <h3>Explicación Técnica</h3>
+            <p>
+              Esta aplicación muestra la integración entre JavaScript y Python:
+            </p>
+            <ul>
+              <li>
+                JavaScript captura video de la cámara del usuario usando la API
+                MediaDevices
+              </li>
+              <li>
+                Cada frame se envía al servidor como una imagen JPEG codificada
+                en base64
+              </li>
+              <li>El servidor Python procesa el frame utilizando OpenCV</li>
+              <li>
+                El resultado se devuelve al navegador y se muestra en tiempo
+                real
+              </li>
+            </ul>
+            <p>
+              Este enfoque híbrido permite ejecutar algoritmos avanzados de
+              visión por computadora en plataformas como PythonAnywhere, donde
+              no se tiene acceso directo a la cámara desde el servidor.
+            </p>
+          </div>
+        </div>
+      </main>
+
+      <footer>
+        <p>Creado con Python, Flask y OpenCV - Derechos de Autor</p>
+        <p>AUTORES:</p>
+        <cite>Jorge Pariachi Daniel Angel y Gianfranco Aliaga Caysahuana</cite>
+        <p class="small">Trabajo Realizado en SENATI - 2025</p>
+      </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>
